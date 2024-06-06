@@ -143,7 +143,7 @@ if _G.SafeServerHop then
         _G.DisableForceViewCam = %*
         _G.SafeServerHop = true
         loadstring(game:HttpGet("https://raw.githubusercontent.com/bqmb3/AH-anticrash/main/main.lua",true))()
-    ]]):format(_G.DisableMeshes, _G.GlobalAntiCrash, _G.DisableLongName, _G.DisableSeats, _G.DisableForceViewCam))
+    ]]):format(_G.DisableMeshes, _G.GlobalAntiCrash, _G.DisableLongName, _G.DisableEffects, _G.DisableSeats, _G.DisableForceViewCam))
 end
 
 return {
