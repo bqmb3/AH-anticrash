@@ -1,8 +1,6 @@
 local enabled: boolean = false
 local whitelistedMeshes = string.split(game:HttpGet("https://raw.githubusercontent.com/bqmb3/AH-anticrash/main/whitelistedMeshes.txt", true), '\n')
-for _, v in ipairs(whitelistedMeshes) do
-	print(v)
-end
+
 local plr = game:GetService('Players').LocalPlayer
 local RunService = game:GetService('RunService')
 
