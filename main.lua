@@ -137,6 +137,7 @@ setEnabled(true)
 if _G.SafeServerHop then
 ---@diagnostic disable-next-line: undefined-global
     queue_on_teleport(([[
+		game.RunService:Set3dRenderingEnabled(false)
         _G.DisableMeshes = %*
         _G.GlobalAntiCrash = %*
         _G.DisableLongName = %*
@@ -145,6 +146,7 @@ if _G.SafeServerHop then
         _G.DisableForceViewCam = %*
         _G.SafeServerHop = true
         loadstring(game:HttpGet("https://raw.githubusercontent.com/bqmb3/AH-anticrash/main/main.lua",true))()
+		game.RunService:Set3dRenderingEnabled(true)
     ]]):format(_G.DisableMeshes, _G.GlobalAntiCrash, _G.DisableLongName, _G.DisableEffects, _G.DisableSeats, _G.DisableForceViewCam))
 end
 

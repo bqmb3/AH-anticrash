@@ -1,7 +1,7 @@
 # AH-anticrash
 ```lua
 _G.DisableMeshes = true -- Does not render meshes
-_G.GlobalAntiCrash = false -- Applies anti-crash for all players in the server, basically removes all mesh parts
+_G.GlobalAntiCrash = false -- (DOES NOT WORK ATM) Applies anti-crash for all players in the server, basically removes all mesh parts
 _G.DisableLongName = true -- Does not display long names of Humanoid, also known as fatal, data model crash
 _G.DisableEffects = true -- Disables effects such as fire, smoke
 _G.DisableSeats = false -- Prevents you from sitting in a seat part. Seat parts are often used for crash portals. You can still sit by clicking on a seat part.
