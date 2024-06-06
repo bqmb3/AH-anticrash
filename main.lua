@@ -1,4 +1,4 @@
-local enabled: boolean = true
+local enabled: boolean = false
 local whitelistedMeshes = string.split(game:HttpGet("https://raw.githubusercontent.com/bqmb3/AH-anticrash/main/whitelistedMeshes.txt", true), '\n')
 local plr = game:GetService('Players').LocalPlayer
 local RunService = game:GetService('RunService')
@@ -131,6 +131,8 @@ function setEnabled(v: boolean)
 	end
     return enabled
 end
+
+setEnabled(true)
 
 if _G.SafeServerHop then
 ---@diagnostic disable-next-line: undefined-global
