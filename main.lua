@@ -45,11 +45,11 @@ function sanitizeObject(v)
         end
     end
 	if _G.DisableMeshes and (v:IsA('SpecialMesh') or v:IsA('MeshPart')) then
-		if table.find(whitelistedMeshes, tonumber(tostring(v.MeshId:gsub('%D+', '')))) == nil == false and not (v:FindFirstAncestorOfClass('Model') and v:FindFirstAncestorOfClass('Model'):FindFirstChildOfClass('Humanoid')) then
+		if table.find(whitelistedMeshes, tostring(v.MeshId:gsub('%D+', ''))) == nil == false and not (v:FindFirstAncestorOfClass('Model') and v:FindFirstAncestorOfClass('Model'):FindFirstChildOfClass('Humanoid')) then
 			disabledMeshes[v] = v.MeshId
 			v.MeshId = ''
 			table.insert(antiCrashConnections, v:GetPropertyChangedSignal("MeshId"):Connect(function()
-				if table.find(whitelistedMeshes, tonumber(tostring(v.MeshId:gsub('%D+', '')))) == nil then
+				if table.find(whitelistedMeshes, tostring(v.MeshId:gsub('%D+', ''))) == nil then
 					disabledMeshes[v] = v.MeshId
 					v.MeshId = ''
 				end
@@ -68,9 +68,9 @@ function sanitizeObject(v)
 	end
 end
 
-function setEnabled(v: boolean)
-	if enabled == v then return end
-    enabled = v
+function setEnabled(bool: boolean)
+	if enabled == bool then return end
+    enabled = bool
 	if enabled then
 		for _, v in pairs(workspace:GetDescendants()) do
 			sanitizeObject(v)
