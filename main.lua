@@ -43,7 +43,7 @@ function sanitizeObject(v)
             duplicatedPos[roundedPos] = 1
         end
     elseif _G.DisableMeshes and (v:IsA('SpecialMesh') or v:IsA('MeshPart')) then
-		if table.find(whitelistedMeshes, tostring(v.MeshId:gsub('%D+', ''))) == nil == false and not (v:FindFirstAncestorOfClass('Model') and v:FindFirstAncestorOfClass('Model'):FindFirstChildOfClass('Humanoid')) then
+		if not table.find(whitelistedMeshes, tostring(v.MeshId:gsub('%D+', ''))) and not (v:FindFirstAncestorOfClass('Model') and v:FindFirstAncestorOfClass('Model'):FindFirstChildOfClass('Humanoid')) then
 			disabledMeshes[v] = v.MeshId
 			v.MeshId = ''
 			table.insert(antiCrashConnections, v:GetPropertyChangedSignal("MeshId"):Connect(function()
