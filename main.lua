@@ -46,16 +46,14 @@ function sanitizeObject(v)
             duplicatedPos[roundedPos] = 1
         end
     elseif _G.DisableMeshes and (v:IsA('SpecialMesh') or v:IsA('MeshPart')) then
-		if not table.find(whitelistedMeshes, tostring(v.MeshId:gsub('%D+', ''))) and not (v:FindFirstAncestorOfClass('Model') and v:FindFirstAncestorOfClass('Model'):FindFirstChildOfClass('Humanoid')) then
+		local function sanitizeMesh()
 			disabledMeshes[v] = v.MeshId
-			v.MeshId = ''
-			table.insert(antiCrashConnections, v:GetPropertyChangedSignal("MeshId"):Connect(function()
-				if table.find(whitelistedMeshes, tostring(v.MeshId:gsub('%D+', ''))) == nil then
-					disabledMeshes[v] = v.MeshId
-					v.MeshId = ''
-				end
-			end))
+			if table.find(whitelistedMeshes, tostring(v.MeshId:gsub('%D+', ''))) == nil then
+				v.MeshId = ''
+			end
 		end
+		sanitizeMesh()
+		table.insert(antiCrashConnections, v:GetPropertyChangedSignal("MeshId"):Connect(sanitizeMesh))
 	elseif _G.DisableSeats and (v:IsA('Seat') or v:IsA('VehicleSeat')) and not v.Disabled then
 		v.Disabled = true
 		local sitClick = Instance.new('ClickDetector', v)
