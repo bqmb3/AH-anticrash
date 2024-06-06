@@ -25,8 +25,7 @@ function sanitizeObject(v)
 			disabledHumanoids[v] = v.DisplayDistanceType
 			v.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
 		end
-	end
-    if v:IsA('BasePart') then
+	elseif v:IsA('BasePart') then
 		local roundedPos = Vector3.new(math.round(v.Position.X), math.round(v.Position.Y), math.round(v.Position.Z))
         if duplicatedPos[roundedPos] then
             duplicatedPos[roundedPos] += 1
@@ -43,8 +42,7 @@ function sanitizeObject(v)
         else
             duplicatedPos[roundedPos] = 1
         end
-    end
-	if _G.DisableMeshes and (v:IsA('SpecialMesh') or v:IsA('MeshPart')) then
+    elseif _G.DisableMeshes and (v:IsA('SpecialMesh') or v:IsA('MeshPart')) then
 		if table.find(whitelistedMeshes, tostring(v.MeshId:gsub('%D+', ''))) == nil == false and not (v:FindFirstAncestorOfClass('Model') and v:FindFirstAncestorOfClass('Model'):FindFirstChildOfClass('Humanoid')) then
 			disabledMeshes[v] = v.MeshId
 			v.MeshId = ''
