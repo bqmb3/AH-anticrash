@@ -1,3 +1,6 @@
+> [!IMPORTANT]  
+> **[Admin House!](https://www.roblox.com/games/333164326/Admin-House)** has anti mesh/display name crash now.
+
 # AH-anticrash
 ```lua
 _G.DisableMeshes = true -- Does not render meshes
